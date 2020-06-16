@@ -9,7 +9,7 @@ var pool;
 pool = new Pool({
     //connection to the local database
     //scheme://user:password@localhost/<localDBName>
-    connectionString: 'postgres://postgres:cmpt276@localhost/users'
+    connectionString: 'postgres://postgres:cmpt276@localhost/people'
 
     //to connect to heroku server
     //connectionString: process.env.DATABASE_URL
@@ -29,7 +29,7 @@ app.set('view engine', 'ejs')
 app.get('/', (req, res) => res.render('pages/index'))
 app.get('/database', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM userTable';
+    var getUsersQuery = 'SELECT * FROM person';
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {
@@ -42,7 +42,7 @@ app.get('/database', (req, res) => {
 })
 app.get('/add', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM userTable';
+    var getUsersQuery = 'SELECT * FROM person';
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {
@@ -55,7 +55,7 @@ app.get('/add', (req, res) => {
 })
 app.get('/edit', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM userTable';
+    var getUsersQuery = 'SELECT * FROM person';
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {
@@ -68,7 +68,7 @@ app.get('/edit', (req, res) => {
 })
 app.get('/delete', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM userTable';
+    var getUsersQuery = 'SELECT * FROM person';
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {
@@ -81,7 +81,7 @@ app.get('/delete', (req, res) => {
 })
 app.get('/view', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM userTable';
+    var getUsersQuery = 'SELECT * FROM person';
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {
@@ -94,7 +94,7 @@ app.get('/view', (req, res) => {
 })
 app.get('/display', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM userTable';
+    var getUsersQuery = 'SELECT * FROM person';
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {

@@ -12,10 +12,14 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: darksalmon;
+    top: 0;
+    width: 100%;
+    position: sticky;
 }
 
 li {
     float: left;
+    border-right: 1px solid #bbb;
 }
 
 li a {
@@ -26,9 +30,10 @@ li a {
     text-decoration: none;
 }
 
-
-/* Change the link color to #111 (black) on hover */
-
 li a:hover {
     background-color: coral;
+}
+
+.active {
+    background-color: firebrick;
 }
