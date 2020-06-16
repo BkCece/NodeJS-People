@@ -9,10 +9,10 @@ var pool;
 pool = new Pool({
     //connection to the local database
     //scheme://user:password@localhost/<localDBName>
-    //connectionString: 'postgres://postgres:cmpt276@localhost/users'
+    connectionString: 'postgres://postgres:cmpt276@localhost/users'
 
     //to connect to heroku server
-    connectionString: process.env.DATABASE_URL
+    //connectionString: process.env.DATABASE_URL
 })
 
 var app = express();
@@ -36,7 +36,72 @@ app.get('/database', (req, res) => {
         if (error)
             res.end(error);
         var results = { 'rows': result.rows }
-        res.render('pages/db', results);
+        res.render('pages/peopleDB', results);
+    });
+
+})
+app.get('/add', (req, res) => {
+    //Create query to get all data from db
+    var getUsersQuery = 'SELECT * FROM userTable';
+
+    //Set return values for success and failure
+    pool.query(getUsersQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        var results = { 'rows': result.rows }
+        res.render('pages/peopleAdd', results);
+    });
+
+})
+app.get('/edit', (req, res) => {
+    //Create query to get all data from db
+    var getUsersQuery = 'SELECT * FROM userTable';
+
+    //Set return values for success and failure
+    pool.query(getUsersQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        var results = { 'rows': result.rows }
+        res.render('pages/peopleEdit', results);
+    });
+
+})
+app.get('/delete', (req, res) => {
+    //Create query to get all data from db
+    var getUsersQuery = 'SELECT * FROM userTable';
+
+    //Set return values for success and failure
+    pool.query(getUsersQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        var results = { 'rows': result.rows }
+        res.render('pages/peopleDelete', results);
+    });
+
+})
+app.get('/view', (req, res) => {
+    //Create query to get all data from db
+    var getUsersQuery = 'SELECT * FROM userTable';
+
+    //Set return values for success and failure
+    pool.query(getUsersQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        var results = { 'rows': result.rows }
+        res.render('pages/peopleView', results);
+    });
+
+})
+app.get('/display', (req, res) => {
+    //Create query to get all data from db
+    var getUsersQuery = 'SELECT * FROM userTable';
+
+    //Set return values for success and failure
+    pool.query(getUsersQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        var results = { 'rows': result.rows }
+        res.render('pages/peopleDisplay', results);
     });
 
 })
