@@ -7,9 +7,12 @@ const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 var pool;
 pool = new Pool({
-    //connection to the database
+    //connection to the local database
     //scheme://user:password@localhost/<localDBName>
-    connectionString: 'postgres://postgres:cmpt276@localhost/users'
+    //connectionString: 'postgres://postgres:cmpt276@localhost/users'
+
+    //to connect to heroku server
+    connectionString: process.env.DATABASE_URL
 })
 
 var app = express();
