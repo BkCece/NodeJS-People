@@ -3,7 +3,7 @@
 
 <head>
     <% include ../partials/peopleHeader.ejs %>
-        <title>Add to People Database</title>
+        <title>Add New Person</title>
 </head>
 
 <body>
@@ -11,15 +11,15 @@
         <div>
             <ul>
                 <li>
-                    <a href="/database"><span></span> Home</a>
+                    <a href="database"><span></span>Home</a>
                 </li>
                 <li>
                     <ul>
-                        <li><a href="/add" class="active">Add New People</a></li>
-                        <li><a href="/edit">Edit People</a></li>
-                        <li><a href="/delete">Delete People</a></li>
-                        <li><a href="/view">View a Person</a></li>
-                        <li><a href="/display">Display People</a></li>
+                        <li><a href="add" class="active">Add New People</a></li>
+                        <li><a href="edit">Edit People</a></li>
+                        <li><a href="delete">Delete People</a></li>
+                        <li><a href="view">View a Person</a></li>
+                        <li><a href="display">Display People</a></li>
                     </ul>
                 </li>
             </ul>
@@ -39,7 +39,7 @@
                 <th>Type</th>
                 <th>Age</th>
             </tr>
-            <% rows.forEach(function(r) { %>
+            <% results.forEach(function(r) { %>
                 <tr>
                     <td>
                         <%= r.pid %>
@@ -66,8 +66,38 @@
                 <% }); %>
         </table>
 
-    </div>
+        <form method="POST" id="addForm">
+            <p>
+                <h2>Person ID</h2>
+                <input type="number" name="pid">
+                <br>
 
+                <h2>Name</h2>
+                <input type="text" name="fname">&nbsp;<input type="text" name="lname">
+                <br>
+
+                <h2>Size (Weight)</h2>
+                <input type="number" name="size">
+                <br>
+
+                <h2>Height</h2>
+                <input type="number" name="height">
+                <br>
+
+                <h2>Blood Type</h2>
+                <input type="text" name="type">
+                <br>
+
+                <h2>Age</h2>
+                <input type="number" name="age">
+                <br>
+            </p>
+            <p>
+                <input type="button" id="btnAdd" class="button" onclick="addPerson()" value="Add New Person"></button>
+            </p>
+        </form>
+
+    </div>
 </body>
 
 </html>

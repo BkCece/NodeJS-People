@@ -3,7 +3,7 @@
 
 <head>
     <% include ../partials/peopleHeader.ejs %>
-        <title>View People in Database</title>
+        <title>View Person</title>
 </head>
 
 <body>
@@ -11,21 +11,21 @@
         <div>
             <ul>
                 <li>
-                    <a href="/database"><span></span> Home</a>
+                    <a href="database"><span></span>Home</a>
                 </li>
                 <li>
                     <ul>
-                        <li><a href="/add">Add New People</a></li>
-                        <li><a href="/edit">Edit People</a></li>
-                        <li><a href="/delete">Delete People</a></li>
-                        <li><a href="/view" class="active">View a Person</a></li>
-                        <li><a href="/display">Display People</a></li>
+                        <li><a href="add">Add New People</a></li>
+                        <li><a href="edit">Edit People</a></li>
+                        <li><a href="delete">Delete People</a></li>
+                        <li><a href="view" class="active">View a Person</a></li>
+                        <li><a href="display">Display People</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
-    <div>
+    <div class="container">
         <h2>Database Results</h2>
 
         <table>
@@ -39,7 +39,7 @@
                 <th>Type</th>
                 <th>Age</th>
             </tr>
-            <% rows.forEach(function(r) { %>
+            <% results.forEach(function(r) { %>
                 <tr>
                     <td>
                         <%= r.pid %>

@@ -19,15 +19,17 @@ ul {
 
 li {
     float: left;
-    border-right: 1px solid #bbb;
+    border-right: 1px solid;
+    border-color: aliceblue;
 }
 
 li a {
     display: block;
-    color: white;
+    color: aliceblue;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-size: larger;
 }
 
 li a:hover {
@@ -35,5 +37,26 @@ li a:hover {
 }
 
 .active {
-    background-color: firebrick;
+    background-color: sienna;
+}
+
+body {
+    /**
+    background-image: url("/public/winter_willow.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    **/
+    background-color: blanchedalmond;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.button {
+    background-color: darksalmon;
+    color: aliceblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: larger;
+    border: none;
 }
