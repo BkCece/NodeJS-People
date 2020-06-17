@@ -3,7 +3,7 @@
 
 <head>
     <% include ../partials/peopleHeader.ejs %>
-        <title>Edit People</title>
+        <title>Edit a Person</title>
 </head>
 
 <body>
@@ -16,8 +16,8 @@
                 <li>
                     <ul>
                         <li><a href="add">Add New Person</a></li>
-                        <li><a href="edit" class="active">Edit People</a></li>
                         <li><a href="delete">Delete a Person</a></li>
+                        <li><a href="edit" class="active">Edit a Person</a></li>
                         <li><a href="display">Display People</a></li>
                         <li><a href="database">People Database</a></li>
                     </ul>
@@ -26,46 +26,53 @@
         </div>
     </nav>
     <div class="container">
-        <h2>Database Results</h2>
+        <h2>Edit a Person</h2>
 
-        <table>
-            <!--rows from index.js /database definition-->
-            <tr>
-                <th>Person Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Size</th>
-                <th>Height</th>
-                <th>Type</th>
-                <th>Age</th>
-            </tr>
-            <% results.forEach(function(r) { %>
-                <tr>
-                    <td>
-                        <%= r.pid %>
-                    </td>
-                    <td>
-                        <%= r.fname %>
-                    </td>
-                    <td>
-                        <%= r.lname %>
-                    </td>
-                    <td>
-                        <%= r.size %>
-                    </td>
-                    <td>
-                        <%= r.height %>
-                    </td>
-                    <td>
-                        <%= r.type %>
-                    </td>
-                    <td>
-                        <%= r.age %>
-                    </td>
-                </tr>
-                <% }); %>
-        </table>
+        <form method="POST" action="/editPerson">
+            <p>
+                <table>
+                    <!--rows from index.js /database definition-->
+                    <tr>
+                        <th>Person ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Size</th>
+                        <th>Height</th>
+                        <th>Type</th>
+                        <th>Age</th>
+                    </tr>
+                    <% results.forEach(function(r) { %>
+                        <tr>
+                            <td>
+                                <input type="number" name="pid" value="<%=r.pid %>" readonly>
+                            </td>
+                            <td>
+                                <input type="text" name="fname" value="<%= r.fname %>" placeholder="First Name">
 
+                            </td>
+                            <td>
+                                <input type="text" name="lname" value="<%= r.lname %>" placeholder="First Name">
+                            </td>
+                            <td>
+                                <input type="number" name="size" value="<%= r.size %>" placeholder="Size (Weight)">
+                            </td>
+                            <td>
+                                <input type="number" name="height" value="<%= r.height %>" placeholder="Height">
+                            </td>
+                            <td>
+                                <input type="text" name="type" value="<%= r.type %>" placeholder="Blood Type">
+                            </td>
+                            <td>
+                                <input type="number" name="age" value="<%= r.age %>" placeholder="Age">
+                            </td>
+                        </tr>
+                        <% }); %>
+                </table>
+            </p>
+            <p>
+                <input type="submit" name="btnEdit" class="button" value="Edit a Person">
+            </p>
+        </form>
     </div>
 
 </body>
