@@ -37,9 +37,22 @@ app.get('/', (req, res) => {
         if (error)
             res.end(error);
         var results = { 'results': result.rows }
-        res.render('pages/peopleDB', results);
+        res.render('pages/peopleHome', results);
     });
 })
+app.get('/home', (req, res) => {
+    //Create query to get all data from db
+    var getQuery = 'SELECT * FROM person';
+
+    //Set return values for success and failure
+    pool.query(getQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        var results = { 'results': result.rows }
+        res.render('pages/peopleHome', results);
+    });
+})
+
 app.get('/database', (req, res) => {
     //Create query to get all data from db
     var getQuery = 'SELECT * FROM person';
@@ -86,7 +99,7 @@ app.post('/add', (req, res) => {
             res.end(error);
         //var results = { 'results': result.rows }
         //res.render('pages/peopleAdd', results);
-        res.redirect('/add');
+        res.redirect('/database');
     });
 
 })
@@ -104,12 +117,14 @@ app.get('/edit', (req, res) => {
     });
 
 })
+
+//Load delete page
 app.get('/delete', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM person';
+    var getQuery = 'SELECT * FROM person';
 
     //Set return values for success and failure
-    pool.query(getUsersQuery, (error, result) => {
+    pool.query(getQuery, (error, result) => {
         if (error)
             res.end(error);
         var results = { 'results': result.rows }
@@ -117,18 +132,33 @@ app.get('/delete', (req, res) => {
     });
 
 })
-app.get('/view', (req, res) => {
-    //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM person';
 
-    //Set return values for success and failure
-    pool.query(getUsersQuery, (error, result) => {
+//Delete person from table
+app.post('/delete', (req, res) => {
+    var pid = req.body.pid;
+
+    //Delete row from person table
+    var deleteQuery = 'DELETE FROM person WHERE pid=' + pid;
+    pool.query(deleteQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        res.redirect('/delete');
+    });
+
+})
+
+//View a person's details
+app.post('/view', (req, res) => {
+    var pid = req.body.pid;
+
+    //View a row's from person table
+    var viewQuery = 'SELECT * FROM person WHERE pid=' + pid;
+    pool.query(viewQuery, (error, result) => {
         if (error)
             res.end(error);
         var results = { 'results': result.rows }
         res.render('pages/peopleView', results);
     });
-
 })
 app.get('/display', (req, res) => {
     //Create query to get all data from db

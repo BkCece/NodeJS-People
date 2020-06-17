@@ -11,33 +11,43 @@
         <div>
             <ul>
                 <li>
-                    <a href="database"><span></span>Home</a>
+                    <a href="home"><span></span>Home</a>
                 </li>
                 <li>
                     <ul>
-                        <li><a href="add">Add New People</a></li>
+                        <li><a href="add">Add New Person</a></li>
                         <li><a href="edit">Edit People</a></li>
-                        <li><a href="delete" class="active">Delete People</a></li>
-                        <li><a href="view">View a Person</a></li>
+                        <li><a href="delete" class="active">Delete a Person</a></li>
                         <li><a href="display">Display People</a></li>
+                        <li><a href="database">People Database</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <h2>Enter Person to remove, by their ID</h2>
+    <form method="POST" action="/delete">
+        <p>
+            <input type="number" name="pid" value="" placeholder="Person ID">
+            <br>
+        </p>
+
+        <p>
+            <input type="submit" name="btnDelete" class="button" value="Delete a Person">
+        </p>
+    </form>
+    <br>
+
     <div class="container">
-        <h2>Database Results</h2>
+        <h2>People</h2>
 
         <table>
             <!--rows from index.js /database definition-->
             <tr>
-                <th>Person Id</th>
+                <th>Person ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Size</th>
-                <th>Height</th>
-                <th>Type</th>
-                <th>Age</th>
             </tr>
             <% results.forEach(function(r) { %>
                 <tr>
@@ -50,24 +60,11 @@
                     <td>
                         <%= r.lname %>
                     </td>
-                    <td>
-                        <%= r.size %>
-                    </td>
-                    <td>
-                        <%= r.height %>
-                    </td>
-                    <td>
-                        <%= r.type %>
-                    </td>
-                    <td>
-                        <%= r.age %>
-                    </td>
                 </tr>
                 <% }); %>
         </table>
 
     </div>
-
 </body>
 
 </html>
