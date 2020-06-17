@@ -66,38 +66,41 @@
                 <% }); %>
         </table>
 
-        <form method="POST" id="addForm">
+        <form method="POST" action="/add">
             <p>
                 <h2>Person ID</h2>
-                <input type="number" name="pid">
+                <input type="number" name="pid" value="" placeholder="Person ID">
                 <br>
 
                 <h2>Name</h2>
-                <input type="text" name="fname">&nbsp;<input type="text" name="lname">
+                <input type="text" name="fname" value="" placeholder="First Name"> &nbsp;
+                <input type="text" name="lname" value="" placeholder="Last Name">
                 <br>
 
                 <h2>Size (Weight)</h2>
-                <input type="number" name="size">
+                <input type="number" name="size" value="" placeholder="Size (Weight)">
                 <br>
 
                 <h2>Height</h2>
-                <input type="number" name="height">
+                <input type="number" name="height" value="" placeholder="Height">
                 <br>
 
                 <h2>Blood Type</h2>
-                <input type="text" name="type">
+                <input type="text" name="type" value="" placeholder="Blood Type">
                 <br>
 
                 <h2>Age</h2>
-                <input type="number" name="age">
+                <input type="number" name="age" value="" placeholder="Age">
                 <br>
+
             </p>
             <p>
-                <input type="button" id="btnAdd" class="button" onclick="addPerson()" value="Add New Person"></button>
+                <input type="submit" name="btnAdd" class="button" value="Add New Person">
             </p>
         </form>
 
     </div>
+    <script type=" text/javascript " src="/public/js/peopleScript.js "></script>
 </body>
 
 </html>

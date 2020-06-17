@@ -15,9 +15,10 @@ pool = new Pool({
     //connectionString: process.env.DATABASE_URL, ssl: true
 })
 
+//Using express calls
 var app = express();
-//express()
 
+//Needed to work with json 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
@@ -53,39 +54,43 @@ app.get('/database', (req, res) => {
 })
 
 //Add Person to database
-
+//Load add page
 app.get('/add', (req, res) => {
-        //Create query to get all data from db
-        var getUsersQuery = 'SELECT * FROM person';
+    //Create query to get all data from db
+    var getQuery = 'SELECT * FROM person';
 
-        //Set return values for success and failure
-        pool.query(getUsersQuery, (error, result) => {
-            if (error)
-                res.end(error);
-            var results = { 'results': result.rows }
-            res.render('pages/peopleAdd', results);
-        });
+    //Set return values for success and failure
+    pool.query(getQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        var results = { 'results': result.rows }
+        res.render('pages/peopleAdd', results);
+    });
 
-    })
-    /** 
-    app.get('/add', (req, res) => res.render('pages/peopleAdd'))
-    app.post('/add', async(req, res) => {
-        try {
-            var addQuery = (`INSERT INTO person VALUES(${req.body.pid}, $1, $2, ${req.body.size}, ${req.body.height}, $3, ${req.body.age})`, [req.body.fname, req.body.lname, req.body.type]);
+})
 
-            //Set return values for success and failure
-            pool.query(addQuery, (error, result) => {
-                if (error)
-                    res.end(error);
-                var results = { 'results': result.rows }
-                res.render('pages/peopleAdd', results);
-            });
-        } catch (err) {
-            console.error(err);
-            res.send("Error " + err);
-        }
-    })
-    */
+//Add new person
+app.post('/add', (req, res) => {
+    var pid = req.body.pid;
+    var fname = req.body.fname;
+    var lname = req.body.lname;
+    var size = req.body.size;
+    var height = req.body.height;
+    var type = req.body.type;
+    var age = req.body.age;
+
+    //Add new row to table
+    var addQuery = 'INSERT INTO person(pid, fname, lname, size, height, type, age) VALUES (' + pid + ', \'' + fname + '\', \'' + lname + '\', ' + size + ', ' + height + ', \'' + type + '\', ' + age + ')';
+    pool.query(addQuery, (error, result) => {
+        if (error)
+            res.end(error);
+        //var results = { 'results': result.rows }
+        //res.render('pages/peopleAdd', results);
+        res.redirect('/add');
+    });
+
+})
+
 app.get('/edit', (req, res) => {
     //Create query to get all data from db
     var getUsersQuery = 'SELECT * FROM person';
