@@ -36,7 +36,7 @@
                         <th>Person ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Size</th>
+                        <th>Size (Width)</th>
                         <th>Height</th>
                         <th>Type</th>
                         <th>Age</th>
@@ -54,13 +54,25 @@
                                 <input type="text" name="lname" value="<%= r.lname %>" placeholder="First Name">
                             </td>
                             <td>
-                                <input type="number" name="size" value="<%= r.size %>" placeholder="Size (Weight)">
+                                <input type="number" name="size" value="<%= r.size %>" placeholder="Size (Width)">
                             </td>
                             <td>
                                 <input type="number" name="height" value="<%= r.height %>" placeholder="Height">
                             </td>
                             <td>
-                                <input type="text" name="type" value="<%= r.type %>" placeholder="Blood Type">
+                                <select name="type">
+                                    <option value="<%= r.type %>" selected disabled hidden>
+                                        <%= r.type %>
+                                    </option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                  </select>
                             </td>
                             <td>
                                 <input type="number" name="age" value="<%= r.age %>" placeholder="Age">
@@ -70,7 +82,7 @@
                 </table>
             </p>
             <p>
-                <input type="submit" name="btnEdit" class="button" value="Edit a Person">
+                <input type="submit" name="btnEdit" class="button" value="Edit Person">
             </p>
         </form>
     </div>

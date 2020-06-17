@@ -30,7 +30,7 @@ app.set('view engine', 'ejs')
 //app.get('/', (req, res) => res.render('pages/index'))
 app.get('/', (req, res) => {
     //Create query to get all data from db
-    var getQuery = 'SELECT * FROM person';
+    var getQuery = 'SELECT * FROM person ORDER BY pid';
 
     //Set return values for success and failure
     pool.query(getQuery, (error, result) => {
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 })
 app.get('/home', (req, res) => {
     //Create query to get all data from db
-    var getQuery = 'SELECT * FROM person';
+    var getQuery = 'SELECT * FROM person ORDER BY pid';
 
     //Set return values for success and failure
     pool.query(getQuery, (error, result) => {
@@ -55,7 +55,7 @@ app.get('/home', (req, res) => {
 
 app.get('/database', (req, res) => {
     //Create query to get all data from db
-    var getQuery = 'SELECT * FROM person';
+    var getQuery = 'SELECT * FROM person ORDER BY pid';
 
     //Set return values for success and failure
     pool.query(getQuery, (error, result) => {
@@ -70,7 +70,7 @@ app.get('/database', (req, res) => {
 //Load add page
 app.get('/add', (req, res) => {
     //Create query to get all data from db
-    var getQuery = 'SELECT * FROM person';
+    var getQuery = 'SELECT * FROM person ORDER BY pid';
 
     //Set return values for success and failure
     pool.query(getQuery, (error, result) => {
@@ -141,7 +141,7 @@ app.post('/editPerson', (req, res) => {
 //Load delete page
 app.get('/delete', (req, res) => {
     //Create query to get all data from db
-    var getQuery = 'SELECT * FROM person';
+    var getQuery = 'SELECT * FROM person ORDER BY pid';
 
     //Set return values for success and failure
     pool.query(getQuery, (error, result) => {
@@ -183,7 +183,7 @@ app.post('/view', (req, res) => {
 
 app.get('/display', (req, res) => {
     //Create query to get all data from db
-    var getUsersQuery = 'SELECT * FROM person';
+    var getUsersQuery = 'SELECT * FROM person ORDER BY pid';
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {
@@ -194,8 +194,5 @@ app.get('/display', (req, res) => {
     });
 
 })
-
-
-
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))

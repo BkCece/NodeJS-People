@@ -40,8 +40,8 @@
                 <input type="text" name="lname" value="" placeholder="Last Name">
                 <br>
 
-                <h3>Size (Weight)</h3>
-                <input type="number" name="size" value="" placeholder="Size (Weight)">
+                <h3>Size (Width)</h3>
+                <input type="number" name="size" value="" placeholder="Size (Width)">
                 <br>
 
                 <h3>Height</h3>
@@ -49,7 +49,19 @@
                 <br>
 
                 <h3>Blood Type</h3>
-                <input type="text" name="type" value="" placeholder="Blood Type">
+                <select name="type">
+                    <option value="" selected disabled hidden>
+                        Select Blood Type
+                    </option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                  </select>
                 <br>
 
                 <h3>Age</h3>

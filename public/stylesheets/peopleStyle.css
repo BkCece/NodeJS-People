@@ -1,5 +1,21 @@
+.display {
+    border: none;
+}
+
+.box {
+    background-color: coral;
+    color: aliceblue;
+    border: none;
+    padding: 5px 5px 5px 5px;
+}
+
+th {
+    background-color: burlywood;
+}
+
 table,
 th,
+tr,
 td {
     border: 2px solid black;
     border-collapse: collapse;
