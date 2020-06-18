@@ -38,6 +38,8 @@
                 <th>Height</th>
                 <th>Type</th>
                 <th>Age</th>
+                <th>Eye Colour</th>
+                <th>Hair Length</th>
             </tr>
             <% results.forEach(function(r) { %>
                 <tr>
@@ -61,6 +63,12 @@
                     </td>
                     <td>
                         <%= r.age %>
+                    </td>
+                    <td>
+                        <%= r.eyes %>
+                    </td>
+                    <td>
+                        <%= r.hair %>
                     </td>
                 </tr>
                 <% }); %>

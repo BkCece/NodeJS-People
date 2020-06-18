@@ -92,9 +92,11 @@ app.post('/add', (req, res) => {
     var height = req.body.height;
     var type = req.body.type;
     var age = req.body.age;
+    var eyes = req.body.eyes;
+    var hair = req.body.hair;
 
     //Add new row to table
-    var addQuery = 'INSERT INTO person(pid, fname, lname, size, height, type, age) VALUES (' + pid + ', \'' + fname + '\', \'' + lname + '\', ' + size + ', ' + height + ', \'' + type + '\', ' + age + ')';
+    var addQuery = 'INSERT INTO person(pid, fname, lname, size, height, type, age, eyes, hair) VALUES (' + pid + ', \'' + fname + '\', \'' + lname + '\', ' + size + ', ' + height + ', \'' + type + '\', ' + age + ', \'' + eyes + '\', \'' + hair + '\')';
     pool.query(addQuery, (error, result) => {
         if (error)
             res.end(error);
@@ -127,9 +129,11 @@ app.post('/editPerson', (req, res) => {
     var height = req.body.height;
     var type = req.body.type;
     var age = req.body.age;
+    var eyes = req.body.eyes;
+    var hair = req.body.hair;
 
     //View a row's from person table
-    var editQuery = 'UPDATE person SET fname=\'' + fname + '\', lname=\'' + lname + '\', size=' + size + ', height=' + height + ', type=\'' + type + '\', age=' + age + ' WHERE pid=' + pid;
+    var editQuery = 'UPDATE person SET fname=\'' + fname + '\', lname=\'' + lname + '\', size=' + size + ', height=' + height + ', type=\'' + type + '\', age=' + age + ', eyes=\'' + eyes + '\', hair=\'' + hair + '\' WHERE pid=' + pid;
 
     pool.query(editQuery, (error, result) => {
         if (error)

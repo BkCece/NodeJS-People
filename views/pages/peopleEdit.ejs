@@ -40,6 +40,8 @@
                         <th>Height</th>
                         <th>Type</th>
                         <th>Age</th>
+                        <th>Eye Colour</th>
+                        <th>Hair Length</th>
                     </tr>
                     <% results.forEach(function(r) { %>
                         <tr>
@@ -79,6 +81,32 @@
                             </td>
                             <td>
                                 <input type="number" name="age" value="<%= r.age %>" placeholder="Age">
+                            </td>
+                            <td>
+                                <select name="eyes">
+                                    <option value="<%= r.eyes %>" selected hidden>
+                                        <%= r.eyes %>
+                                    </option>
+                                    <option value="black">Black</option>
+                                    <option value="brown">Brown</option>
+                                    <option value="hazel">Hazel</option>
+                                    <option value="green">Green</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="purple">Purple</option>
+                                    <option value="red">Red</option>
+                                    <option value="gold">Gold</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="hair">
+                                    <option value="<%= r.hair %>" selected hidden>
+                                        <%= r.hair %>
+                                    </option>
+                                    <option value="bald">Bald</option>
+                                    <option value="short">Short</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="long">Long</option>
+                                </select>
                             </td>
                         </tr>
                         <% }); %>
