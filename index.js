@@ -9,7 +9,8 @@ var pool;
 pool = new Pool({
     //connection to the local database
     //scheme://user:password@localhost/<localDBName>
-    connectionString: 'postgres://postgres:cmpt276@localhost/people'
+    connectionString: process.env.DATABASE_URL,
+    ssl: true || 'postgres://postgres:cmpt276@localhost/people'
 
     //to connect to heroku server
     //connectionString: process.env.DATABASE_URL, ssl: true
@@ -92,6 +93,9 @@ app.post('/add', (req, res) => {
     var type = req.body.type;
     var age = req.body.age;
 
+    window.console(type);
+
+    /** 
     //Add new row to table
     var addQuery = 'INSERT INTO person(pid, fname, lname, size, height, type, age) VALUES (' + pid + ', \'' + fname + '\', \'' + lname + '\', ' + size + ', ' + height + ', \'' + type + '\', ' + age + ')';
     pool.query(addQuery, (error, result) => {
@@ -101,7 +105,7 @@ app.post('/add', (req, res) => {
         //res.render('pages/peopleAdd', results);
         res.redirect('/database');
     });
-
+*/
 })
 
 //Load edit page
