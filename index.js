@@ -10,7 +10,7 @@ pool = new Pool({
     //connection to the local database
     //scheme://user:password@localhost/<localDBName>
     connectionString: process.env.DATABASE_URL,
-    ssl: true || 'postgres://postgres:cmpt276@localhost/people'
+    ssl: true //|| 'postgres://postgres:cmpt276@localhost/people'
 
     //to connect to heroku server
     //connectionString: process.env.DATABASE_URL, ssl: true
