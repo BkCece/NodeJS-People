@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5432 //5000
 
 //For use with PostgreSQL database
 //From cmpt276 demo 5 
@@ -10,10 +10,11 @@ pool = new Pool({
     //connection to the local database
     //scheme://user:password@localhost/<localDBName>
 
-    connectionString: 'postgres://postgres:cmpt276@localhost/people'
+    //connectionString: 'postgres://postgres:cmpt276@localhost/people'
 
     //to connect to heroku server
-    //connectionString: process.env.DATABASE_URL, ssl: true
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
 })
 
 //Using express calls
