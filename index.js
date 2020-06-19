@@ -13,8 +13,7 @@ pool = new Pool({
     //connectionString: 'postgres://postgres:cmpt276@localhost/people'
 
     //to connect to heroku server
-    connectionString: process.env.DATABASE_URL,
-    ssl: true
+    connectionString: process.env.DATABASE_URL
 })
 
 //Using express calls
