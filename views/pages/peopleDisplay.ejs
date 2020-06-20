@@ -24,15 +24,14 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <h2>Database Results</h2>
+    <div class="display">
+        <h2>People - Displayed!</h2>
 
         <% results.forEach(function(r) { %>
             <div class="box" style="background-color: <%= r.eyes %>; width:<%= r.size %>px; height:<%= r.height %>px">
-                <%= r.fname %>&nbsp;
+                <%= r.fname %>
                     <%= r.lname %>
             </div>
-            <br>
             <% }); %>
 
     </div>
