@@ -27,20 +27,13 @@
     <div class="container">
         <h2>Database Results</h2>
 
-        <table class="display">
-            <tr class="display">
-                <% results.forEach(function(r) { %>
-                    <td class="display">
-                        <div class="box" style="width:<%= r.size %>px;height:<%= r.height %>px">
-                            <%= r.fname %>&nbsp;
-                                <%= r.lname %>
-                        </div>
-
-                    </td>
-                    <% }); %>
-            </tr>
-
-        </table>
+        <% results.forEach(function(r) { %>
+            <div class="box" style="background-color: <%= r.eyes %>; width:<%= r.size %>px; height:<%= r.height %>px">
+                <%= r.fname %>&nbsp;
+                    <%= r.lname %>
+            </div>
+            <br>
+            <% }); %>
 
     </div>
 

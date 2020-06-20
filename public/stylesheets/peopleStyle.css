@@ -1,9 +1,5 @@
-.display {
-    border: none;
-}
-
 .box {
-    background-color: coral;
+    background-color: darksalmon;
     color: aliceblue;
     border: none;
     padding: 5px 5px 5px 5px;
