@@ -18,64 +18,97 @@
                         <li><a href="add">Add New Person</a></li>
                         <li><a href="delete">Delete a Person</a></li>
                         <li><a href="display">Display People</a></li>
-                        <li><a href="database">People Database</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
-    <h2>Enter a person's ID here to view them in detail</h2>
-    <form method="POST" action="/view">
-        <p>
-            <input type="number" name="pid" value="" placeholder="Person ID">
-            <br>
-        </p>
 
-        <p>
-            <input type="submit" name="btnView" class="button" value="View a Person">
-        </p>
-    </form>
-    <br>
+    <table class="homeTBL">
+        <tr class="homeTBL">
+            <td class="homeTBL">
+                <div class="container">
+                    <h2>People Database</h2>
+                    <h3>This is the current list of people in the database</h3>
+                    <table>
+                        <!--rows from index.js /database definition-->
+                        <tr>
+                            <th>Person ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                        </tr>
+                        <% results.forEach(function(r) { %>
+                            <tr>
+                                <td>
+                                    <%= r.pid %>
+                                </td>
+                                <td>
+                                    <%= r.fname %>
+                                </td>
+                                <td>
+                                    <%= r.lname %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </table>
 
-    <h2>Or enter a person's ID here to edit their details</h2>
-    <form method="POST" action="/edit">
-        <p>
-            <input type="number" name="pid" value="" placeholder="Person ID">
-            <br>
-        </p>
+                </div>
+            </td>
+            <td class="homeTBL">
+                <h3>Enter a person's ID here to view them in detail</h3>
+                <form method="POST" action="/view">
+                    <p>
+                        <input type="number" name="pid" value="" placeholder="Person ID">
+                        <br>
+                    </p>
 
-        <p>
-            <input type="submit" name="btnEdit" class="button" value="Edit a Person">
-        </p>
-    </form>
-    <br>
+                    <p>
+                        <input type="submit" name="btnView" class="button" value="View a Person">
+                    </p>
+                </form>
+                <br>
+                <hr>
+                <h3>Or enter a person's ID here to edit their details</h3>
+                <form method="POST" action="/edit">
+                    <p>
+                        <input type="number" name="pid" value="" placeholder="Person ID">
+                        <br>
+                    </p>
 
-    <div class="container">
-        <h2>People Database</h2>
-        <h3>This is the current list of people in the database</h3>
-        <table>
-            <!--rows from index.js /database definition-->
-            <tr>
-                <th>Person ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-            <% results.forEach(function(r) { %>
-                <tr>
-                    <td>
-                        <%= r.pid %>
-                    </td>
-                    <td>
-                        <%= r.fname %>
-                    </td>
-                    <td>
-                        <%= r.lname %>
-                    </td>
-                </tr>
-                <% }); %>
-        </table>
+                    <p>
+                        <input type="submit" name="btnEdit" class="button" value="Edit a Person">
+                    </p>
+                </form>
+                <br>
+                <hr>
+                <h3>Or login to view the details of all the people</h3>
+                <form method="POST" action="/login">
+                    <p>
+                        <input type="text" name="username" value="" placeholder="Username">
+                        <input type="password" name="password" id="password" value="" placeholder="Password">
+                        <input type="checkbox" onclick="showPassword()">
+                        <br>
+                    </p>
 
-    </div>
+                    <p>
+                        <input type="submit" name="btnLogin" class="button" value="Login to view Database">
+                    </p>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        //Toggle password display
+        function showPassword() {
+            var pass = document.getElementById("password");
+            if (pass.type == "password") {
+                pass.type = "text";
+            } else {
+                pass.type = "password";
+            }
+        }
+    </script>
 
 </body>
 

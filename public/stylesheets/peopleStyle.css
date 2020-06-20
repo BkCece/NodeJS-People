@@ -1,6 +1,24 @@
+.homeTBL {
+    border: none;
+    padding: 5px 100px 5px 5px;
+    position: top;
+    vertical-align: top;
+}
+
 .display {
     position: absolute;
     width: 100%;
+}
+
+.boxTBL {
+    display: block;
+    border: none;
+}
+
+.boxCELL {
+    display: inline-block;
+    border: none;
+    vertical-align: bottom;
 }
 
 .box {
@@ -9,7 +27,6 @@
     border: none;
     padding: 5px 5px 5px 5px;
     margin: 5px 5px 5px 5px;
-    float: left;
 }
 
 th {

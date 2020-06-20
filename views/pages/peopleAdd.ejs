@@ -18,117 +18,124 @@
                         <li><a href="add" class="active">Add New Person</a></li>
                         <li><a href="delete">Delete a Person</a></li>
                         <li><a href="display">Display People</a></li>
-                        <li><a href="database">People Database</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
+    <table class="homeTBL">
+        <tr class="homeTBL">
+            <td class="homeTBL">
+                <div class="container">
+                    <h3>This is the current list of people in the database</h3>
+                    <table>
+                        <!--rows from index.js /database definition-->
+                        <tr>
+                            <th>Person ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                        </tr>
+                        <% results.forEach(function(r) { %>
+                            <tr>
+                                <td>
+                                    <%= r.pid %>
+                                </td>
+                                <td>
+                                    <%= r.fname %>
+                                </td>
+                                <td>
+                                    <%= r.lname %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </table>
+                </div>
+                <br>
+            </td>
+
+            <td class="homeTBL">
+                <h2>Add a New Person to the Database</h2>
+                <h4>Please ensure that all data is filled in</h4>
+                <hr>
+                <form method="POST" action="/add">
+                    <p>
+                        <h3>Person ID (this must be a new, unique number!)</h3>
+                        <input type="number" name="pid" value="" placeholder="Person ID">
+                        <br>
+
+                        <h3>Name</h3>
+                        <input type="text" name="fname" value="" placeholder="First Name"> &nbsp;
+                        <input type="text" name="lname" value="" placeholder="Last Name">
+                        <br>
+
+                        <h3>Size (Width)</h3>
+                        <input type="number" name="size" value="" placeholder="Size (Width)">
+                        <br>
+
+                        <h3>Height</h3>
+                        <input type="number" name="height" value="" placeholder="Height">
+                        <br>
+
+                        <h3>Blood Type</h3>
+                        <select name="type">
+                            <option value="" selected disabled hidden>
+                                Select Blood Type
+                            </option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                          </select>
+                        <br>
+
+                        <h3>Age</h3>
+                        <input type="number" name="age" value="" placeholder="Age">
+                        <br>
+
+                        <h3>Eye Colour</h3>
+                        <select name="eyes">
+                            <option value="" selected disabled hidden>
+                                Select Eye Colour
+                            </option>
+                            <option value="black">Black</option>
+                            <option value="brown">Brown</option>
+                            <option value="green">Green</option>
+                            <option value="blue">Blue</option>
+                            <option value="grey">Grey</option>
+                            <option value="purple">Purple</option>
+                            <option value="red">Red</option>
+                            <option value="gold">Gold</option>
+                          </select>
+                        <br>
+
+                        <h3>Hair Length</h3>
+                        <select name="hair">
+                            <option value="" selected disabled hidden>
+                                Select Hair Length
+                            </option>
+                            <option value="bald">Bald</option>
+                            <option value="short">Short</option>
+                            <option value="medium">Medium</option>
+                            <option value="long">Long</option>
+                          </select>
+                        <br>
+
+                    </p>
+                    <p>
+                        <input type="submit" name="btnAdd" class="button" value="Add New Person">
+                    </p>
+                </form>
+
+                </div>
+            </td>
+
+        </tr>
+    </table>
     <div class="container">
-
-        <h2>Add a New Person to the Database</h2>
-        <br>
-
-        <div class="container">
-            <h3>This is the current list of people in the database</h3>
-            <table>
-                <!--rows from index.js /database definition-->
-                <tr>
-                    <th>Person ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-                <% results.forEach(function(r) { %>
-                    <tr>
-                        <td>
-                            <%= r.pid %>
-                        </td>
-                        <td>
-                            <%= r.fname %>
-                        </td>
-                        <td>
-                            <%= r.lname %>
-                        </td>
-                    </tr>
-                    <% }); %>
-            </table>
-        </div>
-        <br>
-
-        <form method="POST" action="/add">
-            <p>
-                <h3>Person ID (this must be a new, unique number!)</h3>
-                <input type="number" name="pid" value="" placeholder="Person ID">
-                <br>
-
-                <h3>Name</h3>
-                <input type="text" name="fname" value="" placeholder="First Name"> &nbsp;
-                <input type="text" name="lname" value="" placeholder="Last Name">
-                <br>
-
-                <h3>Size (Width)</h3>
-                <input type="number" name="size" value="" placeholder="Size (Width)">
-                <br>
-
-                <h3>Height</h3>
-                <input type="number" name="height" value="" placeholder="Height">
-                <br>
-
-                <h3>Blood Type</h3>
-                <select name="type">
-                    <option value="" selected disabled hidden>
-                        Select Blood Type
-                    </option>
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
-                  </select>
-                <br>
-
-                <h3>Age</h3>
-                <input type="number" name="age" value="" placeholder="Age">
-                <br>
-
-                <h3>Eye Colour</h3>
-                <select name="eyes">
-                    <option value="" selected disabled hidden>
-                        Select Eye Colour
-                    </option>
-                    <option value="black">Black</option>
-                    <option value="brown">Brown</option>
-                    <option value="green">Green</option>
-                    <option value="blue">Blue</option>
-                    <option value="grey">Grey</option>
-                    <option value="purple">Purple</option>
-                    <option value="red">Red</option>
-                    <option value="gold">Gold</option>
-                  </select>
-                <br>
-
-                <h3>Hair Length</h3>
-                <select name="hair">
-                    <option value="" selected disabled hidden>
-                        Select Hair Length
-                    </option>
-                    <option value="bald">Bald</option>
-                    <option value="short">Short</option>
-                    <option value="medium">Medium</option>
-                    <option value="long">Long</option>
-                  </select>
-                <br>
-
-            </p>
-            <p>
-                <input type="submit" name="btnAdd" class="button" value="Add New Person">
-            </p>
-        </form>
-
-    </div>
 </body>
 
 </html>

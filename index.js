@@ -1,20 +1,17 @@
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
+const LOGIN_USERNAME = "admin";
+const LOGIN_PASSWORD = "this_IS_correct_276";
 
 //For use with PostgreSQL database
 //From cmpt276 demo 5 
 const { Pool } = require('pg');
 var pool;
 pool = new Pool({
-    //connection to the local database
     //scheme://user:password@localhost/<localDBName>
 
-    //connectionString: 'postgres://postgres:cmpt276@localhost/people'
-
-    //to connect to heroku server
-    //connectionString: process.env.DATABASE_URL
-
+    //to connect to heroku server or heroku local
     connectionString: process.env.DATABASE_URL || 'postgres://postgres:cmpt276@localhost/people'
 })
 
@@ -54,6 +51,19 @@ app.get('/home', (req, res) => {
         var results = { 'results': result.rows }
         res.render('pages/peopleHome', results);
     });
+})
+
+//requires pre-set login and password to view the database data in its entirety
+app.post('/login', (req, res) => {
+    username = req.body.username;
+    password = req.body.password;
+
+    //returns 0 if the strings are the same
+    if ((username.localeCompare(LOGIN_USERNAME) == 0) && (password.localeCompare(LOGIN_PASSWORD) == 0)) {
+        res.redirect('/database');
+    } else {
+        alert("Incorrect login!");
+    }
 })
 
 app.get('/database', (req, res) => {
@@ -104,7 +114,7 @@ app.post('/add', (req, res) => {
             res.end(error);
         //var results = { 'results': result.rows }
         //res.render('pages/peopleAdd', results);
-        res.redirect('/database');
+        res.redirect('/home');
     });
 })
 
@@ -140,7 +150,7 @@ app.post('/editPerson', (req, res) => {
     pool.query(editQuery, (error, result) => {
         if (error)
             res.end(error);
-        res.redirect('/database');
+        res.redirect('/home');
     });
 })
 
