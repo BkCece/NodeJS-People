@@ -84,7 +84,7 @@
                 <h3>Or login to view the details of all the people</h3>
                 <form method="POST" action="/login">
                     <p>
-                        <input type="text" name="username" value="" placeholder="Username">
+                        <input type="text" name="username" id="username" value="" placeholder="Username">
                         <input type="password" name="password" id="password" value="" placeholder="Password">
                         <input type="checkbox" onclick="showPassword()">
                         <br>
@@ -94,6 +94,7 @@
                         <input type="submit" name="btnLogin" class="button" value="Login to view Database">
                     </p>
                 </form>
+                <div id="loginStatus"></div>
             </td>
         </tr>
     </table>

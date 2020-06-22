@@ -4,6 +4,28 @@ A NodeJS assignment for CMPT276 at Simon Fraser University, taught by Bobby Chan
 
 This repository includes assignment 2 from the course, roughly two months into the 4 month term.
 
+## Features
+
+**Base Features**
+- The **Home Page** includes an option to **view** a specific person's details and an option to **edit** a specific person's details.
+- The **Add Page** includes a form to add a new person. Base attributes were the name, size, height, and type. This new person is added to the database and then the page is reloaded.
+- The **Delete Page** includes an option to remove a person, then the page is refreshed.
+- The **Display Page** includes all the people in the database, displayed as boxes. Their width and height determines the size of the person, and the colour is based on their eye colour.
+
+**Additional Features**
+- The Home Page includes a **login** that uses username: *admin* and password: *this_IS_correct_276*. Correct input lets the user view the entire database, which shows the details for each person without needing to search for one person at a time.
+- Each (applicable) page has a **simplified view of the database** that is more user-friendly. It includes each Person ID, Firstname, and Lastname. All searches for users can be done through their ID (which is unique) for ease of access.
+- **Extra attributes** include: splitting name into First Name and Last Name, a Person ID, Age, Eye Colour, and Hair Length.
+- **Dropdowns** for selecting certain attributes. This makes it easier for the user to determine the intended input for some attributes, such as Blood Type, Eye Colour, and Hair Length. For example, Blood Type can only be 8 different types, so there's no need to make it an empty text box.
+- Screen-size-scaled formatting for the display page ensures that people can be displayed in rows that scale to the size of the screen, which then wraps to a new row for easy and clean viewing of all people in the database.
+
+**Error Handling**
+- A Person ID must be unique, so adding a person with the same ID does not add a new entry. The ID also cannot be edited in the Edit Page.
+- Errors with loading a page or querying the database - triggered by a button (view, edit, login, add, delete) - reload the page without crashing. This gives the user an opportunity to correct their input (such as an incorrect password).
+- Searches for a non-existing Person ID load and empty table with headers, showing the user that there is no entry to match, without crashing the application.
+- Errors with loading individual pages (add, delete, display) simply redirect to the home page. A person can see the current database simplified here or login to view the full database, which is great for finding errors in data. Issues can be edited from the home page.
+- Errors with loading the database crashes the application, leaving repairs to be done through backend, as the error is likely a database or connection issue.
+
 ## Version Specifics
 
 Installations *in command line on windows*:

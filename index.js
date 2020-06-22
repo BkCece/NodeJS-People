@@ -62,7 +62,7 @@ app.post('/login', (req, res) => {
     if ((username.localeCompare(LOGIN_USERNAME) == 0) && (password.localeCompare(LOGIN_PASSWORD) == 0)) {
         res.redirect('/database');
     } else {
-        alert("Incorrect login!");
+        res.redirect('/home');
     }
 })
 
@@ -87,10 +87,14 @@ app.get('/add', (req, res) => {
 
     //Set return values for success and failure
     pool.query(getQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        var results = { 'results': result.rows }
-        res.render('pages/peopleAdd', results);
+        if (error) {
+            res.redirect('/home');
+        } else {
+            var results = { 'results': result.rows }
+            res.render('pages/peopleAdd', results);
+        }
+
+
     });
 
 })
@@ -110,11 +114,8 @@ app.post('/add', (req, res) => {
     //Add new row to table
     var addQuery = 'INSERT INTO person(pid, fname, lname, size, height, type, age, eyes, hair) VALUES (' + pid + ', \'' + fname + '\', \'' + lname + '\', ' + size + ', ' + height + ', \'' + type + '\', ' + age + ', \'' + eyes + '\', \'' + hair + '\')';
     pool.query(addQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        //var results = { 'results': result.rows }
-        //res.render('pages/peopleAdd', results);
-        res.redirect('/home');
+        // if (error) 
+        res.redirect('/add');
     });
 })
 
@@ -125,10 +126,13 @@ app.post('/edit', (req, res) => {
     //View a row's from person table
     var viewQuery = 'SELECT * FROM person WHERE pid=' + pid;
     pool.query(viewQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        var results = { 'results': result.rows }
-        res.render('pages/peopleEdit', results);
+        if (error) {
+            res.redirect('/home');
+        } else {
+            var results = { 'results': result.rows }
+            res.render('pages/peopleEdit', results);
+        }
+
     });
 })
 
@@ -148,9 +152,12 @@ app.post('/editPerson', (req, res) => {
     var editQuery = 'UPDATE person SET fname=\'' + fname + '\', lname=\'' + lname + '\', size=' + size + ', height=' + height + ', type=\'' + type + '\', age=' + age + ', eyes=\'' + eyes + '\', hair=\'' + hair + '\' WHERE pid=' + pid;
 
     pool.query(editQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        res.redirect('/home');
+        if (error) {
+            res.redirect('/edit');
+        } else {
+            res.redirect('/home');
+        }
+
     });
 })
 
@@ -161,10 +168,13 @@ app.get('/delete', (req, res) => {
 
     //Set return values for success and failure
     pool.query(getQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        var results = { 'results': result.rows }
-        res.render('pages/peopleDelete', results);
+        if (error) {
+            res.redirect('/home');
+        } else {
+            var results = { 'results': result.rows }
+            res.render('pages/peopleDelete', results);
+        }
+
     });
 
 })
@@ -176,8 +186,7 @@ app.post('/delete', (req, res) => {
     //Delete row from person table
     var deleteQuery = 'DELETE FROM person WHERE pid=' + pid;
     pool.query(deleteQuery, (error, result) => {
-        if (error)
-            res.end(error);
+        //if (error)
         res.redirect('/delete');
     });
 
@@ -190,10 +199,13 @@ app.post('/view', (req, res) => {
     //View a row's from person table
     var viewQuery = 'SELECT * FROM person WHERE pid=' + pid;
     pool.query(viewQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        var results = { 'results': result.rows }
-        res.render('pages/peopleView', results);
+        if (error) {
+            res.redirect('/home');
+        } else {
+            var results = { 'results': result.rows }
+            res.render('pages/peopleView', results);
+        }
+
     });
 })
 
@@ -203,10 +215,13 @@ app.get('/display', (req, res) => {
 
     //Set return values for success and failure
     pool.query(getUsersQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        var results = { 'results': result.rows }
-        res.render('pages/peopleDisplay', results);
+        if (error) {
+            res.redirect('/home');
+        } else {
+            var results = { 'results': result.rows }
+            res.render('pages/peopleDisplay', results);
+        }
+
     });
 
 })
