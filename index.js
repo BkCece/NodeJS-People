@@ -120,6 +120,22 @@ app.post('/add', (req, res) => {
 })
 
 //Load edit page
+app.get('/edit', (req, res) => {
+    var pid = req.body.pid;
+
+    //View a row's from person table
+    var viewQuery = 'SELECT * FROM person WHERE pid=' + pid;
+    pool.query(viewQuery, (error, result) => {
+        if (error) {
+            res.redirect('/home');
+        } else {
+            var results = { 'results': result.rows }
+            res.render('pages/peopleEdit', results);
+        }
+
+    });
+})
+
 app.post('/edit', (req, res) => {
     var pid = req.body.pid;
 
